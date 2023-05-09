@@ -107,7 +107,7 @@ jobs:
       - run:
           name: Deploy new version as green
           command: |
-            export VERSION=$(<app/version.txt)
+            export VERSION=$(<version.txt)
             export DOCKER_IMAGE=${DOCKER_HUB_ID}/${DOCKER_REPOSITORY}:${VERSION}
             export LABEL_VERSION=${VERSION/./-}
             
@@ -192,8 +192,8 @@ workflows:
       - run-lint
       - build-and-push-docker-image:
           requires: [run-lint]
-      # - deploy-green:
-      #     requires: [build-and-push-docker-image]
+      - deploy-green:
+          requires: [build-and-push-docker-image]
       # - wait-manual-approval:
       #     type: approval
       #     requires: [deploy-green]
