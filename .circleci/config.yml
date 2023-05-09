@@ -146,7 +146,7 @@ jobs:
       - run:
           name: Target new version — new blue
           command: |
-            export VERSION=$(<app/version.txt)
+            export VERSION=$(<version.txt)
             export LABEL_VERSION=${VERSION/./-}
             echo "LABEL_VERSION: $LABEL_VERSION"
             # flask-app service target now labeled new version
@@ -167,7 +167,7 @@ jobs:
       - run:
           name: Remove the old version flask-app
           command: |
-            export VERSION=$(<app/version.txt)
+            export VERSION=$(<version.txt)
             export LABEL_VERSION=${VERSION/./-}
             echo "LABEL_VERSION: $LABEL_VERSION"
             
@@ -194,10 +194,10 @@ workflows:
           requires: [run-lint]
       - deploy-green:
           requires: [build-and-push-docker-image]
-      # - wait-manual-approval:
-      #     type: approval
-      #     requires: [deploy-green]
-      # - deploy-new-blue:
-      #     requires: [wait-manual-approval]
+      - wait-manual-approval:
+          type: approval
+          requires: [deploy-green]
+      - deploy-new-blue:
+          requires: [wait-manual-approval]
       # - remove-old-blue:
       #     requires: [deploy-new-blue]
