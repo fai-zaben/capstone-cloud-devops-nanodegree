@@ -77,7 +77,7 @@ jobs:
             export VERSION=$(<version.txt)
             
             # Build docker image
-            docker build -t flask-app app
+            docker build -t flask-app .
             
             # Tag image
             docker tag flask-app ${DOCKER_HUB_ID}/${DOCKER_REPOSITORY}:${VERSION}
