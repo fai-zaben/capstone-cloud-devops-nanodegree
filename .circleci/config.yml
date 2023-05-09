@@ -199,5 +199,5 @@ workflows:
           requires: [deploy-green]
       - deploy-new-blue:
           requires: [wait-manual-approval]
-      # - remove-old-blue:
-      #     requires: [deploy-new-blue]
+      - remove-old-blue:
+          requires: [deploy-new-blue]
