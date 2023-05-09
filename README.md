@@ -21,7 +21,7 @@ AWS EKS
 ![screenshot](screenshots/3.png)
 
 #### AWS EC2 page showing the newly created instances
-![screenshot](screenshots/4.png)
+![screenshot](screenshots/4-a.png)
 
 #### kubectl command output showing that the deployment is successful, pods are running, and the service can be accessed via an external IP or port forwarding
 ![screenshot](screenshots/5.png)
